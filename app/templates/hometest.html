@@ -12,6 +12,7 @@
     background-color:#E87E04;
     color:#ffffff;
     border:none;
+
 }
 .glyphicon:active{
 	 border:none;
@@ -22,7 +23,7 @@
 
 }
 .thumbnail>.caption>.glyphicon{
-	font-size:100px;
+	font-size:50px;
 	left:80px;
 }
 .thumbnail>.caption>.list-unstyled>li>.btn{
@@ -33,9 +34,13 @@
 .thumbnail>.caption>h3{
 	text-align:center;
 }
+.thumbnail{
+  border:none;
+}
+
 
 </style>
-<div class="container-fluid">
+<div class="container-fluid" style="height:100%;width:90%;background-color:#ffffff">
 <!--<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -52,13 +57,13 @@
 <div class="row">
                   <div class="col-sm-8" style="padding:0px">
                         <img src="img/myDP.jpg" class="img-responsive img-rounded" style="max-height:30px;max-width:30px;margin-right:0px;display:inline">
-                        <h3 class="text-primary" style="color:#363636;left:50px;top:-50px;position:relative;padding:0px">Pranay V Kalro</h3>
+                        <h4 class="text-primary" style="color:#363636;left:50px;top:-35px;position:relative;padding:0px">{{user.name}}</h4>
                         
                   </div>
 
                   <div class="col-sm-4" style="padding-left:0px;margin-left:0px">
                      
-                  	<button type="button" class="btn btn-warning" style="line-height:10px;">Check Schedule</button>
+                  	<button type="button" class="btn btn-primary" style="line-height:10px;">Check Schedule</button>
                   	<a href="#"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:23px;margin-left:50px;color:#363636"></span></a>
                   	<a href="#"><span class="glyphicon glyphicon-bell" style="font-size:23px;margin-left:50px;color:#363636"></span></a>
 
@@ -71,8 +76,9 @@
              </div>
          </div>
 
-   <div class="jumbotron" style="background-image:url('img/book-recommendation3.jpg');height:400px;margin-bottom:0px">
-   	<h1 style="color:#ffffff;text-align:center;position:relative;top:80px">Hello, Pranay</h1>
+   <div class="jumbotron" style="background-image:url('img/book-library1.jpg');height:400px;margin-bottom:0px;">
+    <div style="opacity:0.8">
+   	<h2 style="color:#ffffff;text-align:center;position:relative;top:80px">Hello,{{user.name}}</h2>
    	   <div class="row" style="position:relative;top:80px">
   <div class="col-lg-12">
     <div class="input-group">
@@ -91,7 +97,7 @@
       </div><!-- /btn-group -->
       <input type="text" class="form-control" aria-label="..." placeholder="Enter student usn or full name">
       <div class="input-group-btn">
-           <button type="button" class="btn btn-warning">Search</button>
+           <button type="button" class="btn btn-primary">Search</button>
 
       </div>
     </div><!-- /input-group -->
@@ -101,9 +107,9 @@
 </div><!-- /.row -->
    	
        
-
+</div>
    </div>
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color:#ffffff">
    	
        <div class="row">
 
@@ -134,7 +140,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-edit" style="color:#446CB3"></span>
+        <span class="glyphicon glyphicon-edit" style="color:#22313F"></span>
         <h3 class="text-primary">Attendance</h3>
         <ul>
           <li class="text-wrap">Check student attendance</li>
@@ -157,14 +163,14 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-file" style="color:#663399"></span>
+        <span class="glyphicon glyphicon-file" style="color:#22313F"></span>
         <h3 class="text-primary">Assignments</h3>
         <ul>
           <li>Upload asignments</li>
           <li>View submissions</li>
           <li>Evaluate submissions</li>
         </ul>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" style="margin-top:30px">
         <li><button type="button" class="btn btn-primary" ng-click="uploadassignment()">Upload Assignments</button></li>
         
       
@@ -179,7 +185,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-folder-open" style="color:#E74C3C"></span>
+        <span class="glyphicon glyphicon-folder-open" style="color:#22313F"></span>
         <h3 class="text-primary">IA Marks</h3>
         <ul>
           <li>View Student Marks</li>

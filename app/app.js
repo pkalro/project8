@@ -82,6 +82,10 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
     
 })
 .controller('HomeCtrl',function($scope,$location){
+
+    $scope.user={};
+    $scope.user.name = JSON.parse(window.localStorage.account).name;
+
     $scope.studentdetails = function(){
                $location.path('/student-profile');
     }
@@ -152,7 +156,8 @@ $location.path('/viewmarks');
       }
    }
 })
-.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+.controller('ModalDemoCtrl', function ($scope,$location, $uibModal, $log) {
+  
 
   $scope.items = ['item1', 'item2', 'item3'];
 
@@ -165,10 +170,17 @@ $location.path('/viewmarks');
       templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl',
       size: 'sm',
+      scope:$scope,
       resolve: {
         items: function () {
           return $scope.items;
-        }
+        },
+         email:function(){
+          return $scope.email;
+         },
+         password:function(){
+          return $scope.password;
+         }
       }
     });
 
@@ -184,16 +196,32 @@ $location.path('/viewmarks');
   };
 
 })
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items,$location) {
+.controller('ModalInstanceCtrl', function ($http,$scope,password, $uibModalInstance,email, items,$location) {
 
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
+
+   $scope.email = email;
+   $scope.password=password;
+   
 
   $scope.ok = function () {
-    $location.path('/hometest');
-     $uibModalInstance.close($scope.selected.item);
+    $http.get('http://localhost:80/loginfacultyaccount.php?email='+$scope.email+'&password='+$scope.password)
+      .then(function(result){
+            console.log(result.data);
+             if(result.data[0]=="Invalid account"){
+                $scope.invalidaccountalert=true;
+               //alert("Invalid account");
+             }
+             else
+             {
+              window.localStorage.account= JSON.stringify(result.data[0]);
+              console.log(window.localStorage.account);
+              $location.path('/hometest');
+    $uibModalInstance.close($scope.email);
+             }
+      });
+    //console.log(window.localStorage.account);
+    
+   
   };
 
   $scope.cancel = function () {
@@ -278,6 +306,8 @@ $scope.inputfile=inputfile;
   };
 
   $scope.cancel = function () {
+
     $uibModalInstance.dismiss('cancel');
+    $location.path('/hometest');
   };
 })
