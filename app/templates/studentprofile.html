@@ -57,9 +57,9 @@
     </div>
  
       </div><!-- /btn-group -->
-      <input type="text" class="form-control" aria-label="..." placeholder="Enter student usn or full name">
+      <input type="text" class="form-control" aria-label="..." placeholder="Enter student usn" ng-model='student.inputusn'>
       <div class="input-group-btn">
-           <button type="button" class="btn btn-primary">Search</button>
+           <button type="button" class="btn btn-primary" ng-click="getstudentdetails()">Search</button>
 
       </div>
     </div><!-- /input-group -->
@@ -71,20 +71,22 @@
        
 
    </div>   
-   <div class="jumbotron" style="background-color:#ffffff">
+   <div ng-show="studententered">
+   <div class="jumbotron" style="background-color:#ffffff" id="student-jumbotron">
+    
         <div class="row">
                <div class="col-lg-2" style="border-right:1px solid #f8f8f8">
 
                    <img src='img/myDP.jpg' class='img-circle img-responsive' style="max-height:100px;max-width:100px"> 
-                   <h4>Pranay V Kalro</h4>
-                   <p class="text-muted" style="font-size:12px">1DS12CS067</p>
+                   <h4>{{student.name}}</h4>
+                   <p class="text-muted" style="font-size:12px">{{student.usn}}</p>
                    <div class="page-header">
                         <a href="#">Contact details</a>
                    </div>
                    <div class="contact-details">
                         
                         
-                        </p><span class="glyphicon glyphicon-earphone"></span>&nbsp 9741850461</p>
+                        </p><span class="glyphicon glyphicon-earphone"></span>&nbsp {{student.phone_no}}</p>
                         <span class="glyphicon glyphicon-envelope">&nbsp<a>pkalro05@gmail.com</a>
 
 
@@ -92,8 +94,8 @@
 
 
                </div>
-               <div class="col-lg-8">
-               	<div class="panel panel-primary">
+               <div class="col-lg-10">
+               	<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Attendance</h3>
   </div>
@@ -114,7 +116,7 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">IA Marks</h3>
   </div>
@@ -123,28 +125,28 @@
            <div class="col-lg-3">
 
                      <h5>Internal Assessment 1</h5>
-                     <h4 class="text-success">25/25</h4>
+                     <h4 class="text-success">{{student.ia1}}/25</h4>
            </div>
            <div class="col-lg-3">
 
                      <h5>Internal Assessment 2</h5>
-                     <h4 class="text-warning">19/25</h4>
+                     <h4 class="text-warning">{{student.ia2}}/25</h4>
            </div>
            <div class="col-lg-3">
                      <h5>Internal Assessment 3</h5>
-                     <h4 class="text-success">23/25</h4>
+                     <h4 class="text-success">{{student.ia3}}/25</h4>
 
            </div>
            <div class="col-lg-3">
                      <h5>Internal Assessment 4</h5>
-                     <h4 class="text-danger">0/25</h4>
+                     <h4 class="text-danger">{{student.ia4}}/25</h4>
 
            </div>
 
     </div>
     <div class="well" style="border:none">
 
-            <h4 class="text-default" style="text-align:center">Average = <span class="text-success">24</span>/25</h4>
+            <h4 class="text-default" style="text-align:center">Average = <span class="text-success">{{student.average}}</span>/25</h4>
 
     </div>
   </div>
@@ -152,7 +154,7 @@
 
 
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Assignments</h3>
   </div>
@@ -182,14 +184,10 @@
 
                </div>
 
-               <div class="col-lg-2">
-
-Hello
-
-               </div>
+               
 
 
-
+</div>
         </div>
 
    </div>      

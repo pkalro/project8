@@ -24,7 +24,12 @@
 }
 .thumbnail>.caption>.glyphicon{
 	font-size:50px;
-	left:80px;
+	left:60px;
+  padding:20px;
+  border:1px solid #a0a0a0;
+  border-radius: 100px;
+  background-color:#f0f0f0;
+  color:#22313F;
 }
 .thumbnail>.caption>.list-unstyled>li>.btn{
 	width:100%;
@@ -34,9 +39,7 @@
 .thumbnail>.caption>h3{
 	text-align:center;
 }
-.thumbnail{
-  border:none;
-}
+
 
 
 </style>
@@ -76,7 +79,7 @@
              </div>
          </div>
 
-   <div class="jumbotron" style="background-image:url('img/book-library1.jpg');height:400px;margin-bottom:0px;">
+   <div class="jumbotron" style="background-image:url('img/book-library1.jpg');height:400px;margin-bottom:0px;width:100%">
     <div style="opacity:0.8">
    	<h2 style="color:#ffffff;text-align:center;position:relative;top:80px">Hello,{{user.name}}</h2>
    	   <div class="row" style="position:relative;top:80px">
@@ -118,7 +121,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-user" style="color:#22313F"></span>
+        <span class="glyphicon glyphicon-user"></span>
         <h3 class="text-primary">Student details</h3>
         <ul>
           <li>Check student details</li>
@@ -140,7 +143,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-edit" style="color:#22313F"></span>
+        <span class="glyphicon glyphicon-edit"></span>
         <h3 class="text-primary">Attendance</h3>
         <ul>
           <li class="text-wrap">Check student attendance</li>
@@ -163,7 +166,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-file" style="color:#22313F"></span>
+        <span class="glyphicon glyphicon-file"></span>
         <h3 class="text-primary">Assignments</h3>
         <ul>
           <li>Upload asignments</li>
@@ -185,7 +188,7 @@
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-folder-open" style="color:#22313F"></span>
+        <span class="glyphicon glyphicon-folder-open"></span>
         <h3 class="text-primary">IA Marks</h3>
         <ul>
           <li>View Student Marks</li>

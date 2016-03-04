@@ -6,7 +6,8 @@ angular.module('myApp', [
    'ui.bootstrap',
    'ngAnimate',
    'chart.js',
-   'ngFileUpload'
+   'ngFileUpload',
+   'ngProgress'
 ]).
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/studentattendance',{
@@ -52,7 +53,7 @@ config(['$routeProvider', function($routeProvider) {
 
     
 })
-.controller('StudentProfileCtrl',function($scope){
+.controller('StudentProfileCtrl',function($scope,$http,ngProgressFactory){
     
 $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   $scope.series = ['Before IA 1', 'Before IA 2'];
@@ -79,6 +80,25 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
     status:true
   }
   ];
+  $scope.student={};
+
+  $scope.getstudentdetails = function(){
+    $scope.progressbar = ngProgressFactory.createInstance();
+    $scope.progressbar.setParent(document.getElementById('student-jumbotron'));
+   $scope.progressbar.setColor('#4183D7');
+              $scope.progressbar.start();
+    //window.localStorage.student = $scope.student.usn;
+     $http.get('http://localhost:80/student_details.php?usn='+$scope.student.inputusn+'&subject_code=10cs71')
+             .then(function(result){
+
+               console.log(result.data);
+              $scope.studententered=true;
+              $scope.student = result.data[0];
+              $scope.student.average=(parseInt($scope.student.ia1) + parseInt($scope.student.ia2) + parseInt($scope.student.ia3))/3.0;
+              //window.localStorage.student = JSON.stringify(result.data[0]);
+             $scope.progressbar.complete();
+        });
+  }
     
 })
 .controller('HomeCtrl',function($scope,$location){
@@ -102,14 +122,21 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
 
     
 })
-.controller('ViewMarksCtrl',function($scope,$http,$location){
+.controller('ViewMarksCtrl',function($scope,$http,$location,ngProgressFactory){
+  $scope.progressbar = ngProgressFactory.createInstance();
+   $scope.progressbar.setColor('#4183D7');
+              $scope.progressbar.start();
    $http.get('http://localhost:80/getmarks.php?subject_code=10cs71')
           .then(function(result){
                //console.log(result.data);
                
+             
                $scope.usn_list = result.data;
                console.log($scope.usn_list[0].name);
+               $scope.progressbar.complete();
+               
           });
+          
 $location.path('/viewmarks');
            
 
@@ -120,14 +147,18 @@ $location.path('/viewmarks');
 .controller('UploadAssignmentCtrl',function($scope){
           
 })
-.controller('UpdateAttendanceCtrl',function($scope,$http){
+.controller('UpdateAttendanceCtrl',function($scope,$http,ngProgressFactory){
 	  $scope.usn_list = {};
+    $scope.progressbar = ngProgressFactory.createInstance();
+   $scope.progressbar.setColor('#4183D7');
+              $scope.progressbar.start();
         $http.get('http://localhost:80/getusn.php?subject_code=10cs71')
           .then(function(result){
           	   //console.log(result.data);
           	   
                $scope.usn_list = result.data;
                console.log($scope.usn_list[0].name);
+                $scope.progressbar.complete();
           });
    $scope.usnselected = function()
    {
@@ -196,7 +227,7 @@ $location.path('/viewmarks');
   };
 
 })
-.controller('ModalInstanceCtrl', function ($http,$scope,password, $uibModalInstance,email, items,$location) {
+.controller('ModalInstanceCtrl', function (ngProgressFactory,$http,$scope,password, $uibModalInstance,email, items,$location) {
 
 
    $scope.email = email;
@@ -204,17 +235,22 @@ $location.path('/viewmarks');
    
 
   $scope.ok = function () {
+     $scope.progressbar = ngProgressFactory.createInstance();
+              $scope.progressbar.setColor('#4183D7');
+              $scope.progressbar.start();
     $http.get('http://localhost:80/loginfacultyaccount.php?email='+$scope.email+'&password='+$scope.password)
       .then(function(result){
             console.log(result.data);
              if(result.data[0]=="Invalid account"){
                 $scope.invalidaccountalert=true;
                //alert("Invalid account");
+               $scope.progressbar.reset();
              }
              else
              {
               window.localStorage.account= JSON.stringify(result.data[0]);
               console.log(window.localStorage.account);
+              $scope.progressbar.reset();
               $location.path('/hometest');
     $uibModalInstance.close($scope.email);
              }
@@ -285,6 +321,7 @@ $location.path('/viewmarks');
    var fd = new FormData();
    //Take the first selected file
    fd.append("assignment", files[0]);
+   
 
    $http.post('http://localhost:80/upload_assignment.php', fd, {
        withCredentials: true,
