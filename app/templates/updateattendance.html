@@ -91,7 +91,7 @@
              <li class="list-group-item" ng-repeat="u in usn_list" style="border-top:none;">
                 <div class="row">
                 	<div class="col-lg-2">
-                <img src='img/myDP.jpg' class="img-circle img-responsive" id='attendance-image' style="max-height:50px;max-width:50px">
+                <img ng-src='{{u.imgurl}}' class="img-circle img-responsive" id='attendance-image' style="max-height:50px;max-width:50px">
             </div>
             <div class="col-lg-6" style="text-align:left">
                 <h4>{{u.name}}</h4>

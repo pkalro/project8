@@ -82,7 +82,7 @@
                         
                         <h5 class="text-warning"  style="border-bottom:2px solid #f8f8f8">15-20 :<span style="font-size:13px">10 students </span> </h5>
                         
-                        <h5 class="text-danger"  style="border-bottom:2px solid #f8f8f8">15-20 :<span style="font-size:13px">5 students </span> </h5>
+                        <h5 class="text-danger"  style="border-bottom:2px solid #f8f8f8">0-15 :<span style="font-size:13px">5 students </span> </h5>
                          
 
 
@@ -101,7 +101,7 @@
              <li class="list-group-item" ng-repeat="u in usn_list" style="border-top:none;">
                 <div class="row">
                 	<div class="col-lg-1">
-                <img src='img/myDP.jpg' class="img-circle img-responsive" id='attendance-image' style="max-height:50px;max-width:50px">
+                <img ng-src='{{u.imgurl}}' class="img-circle img-responsive" id='attendance-image' style="max-height:50px;max-width:50px">
             </div>
             <div class="col-lg-2" style="text-align:left">
                 <h4>{{u.name}}</h4>

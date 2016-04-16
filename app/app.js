@@ -47,6 +47,7 @@ config(['$routeProvider', function($routeProvider) {
     controller:'StudentProfileCtrl'
   })
   $routeProvider.otherwise({redirectTo: '/hometest'});
+
 }])
 .controller('StudentAttendanceCtrl',function($scope){
     
@@ -65,7 +66,7 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
     console.log(points, evt);
   };
   $scope.labels1 = ["Before IA 1", "Before IA 2", "Before IA 3"];
-  $scope.data1 = [30, 50, 80];
+  
 
   $scope.assignments = [{
     assignmentname:'OOMD A1',
@@ -94,6 +95,7 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
                console.log(result.data);
               $scope.studententered=true;
               $scope.student = result.data[0];
+              $scope.data1 = [$scope.student.attendance, 50, 80];
               $scope.student.average=(parseInt($scope.student.ia1) + parseInt($scope.student.ia2) + parseInt($scope.student.ia3))/3.0;
               //window.localStorage.student = JSON.stringify(result.data[0]);
              $scope.progressbar.complete();
@@ -102,6 +104,18 @@ $scope.labels = ["January", "February", "March", "April", "May", "June", "July"]
     
 })
 .controller('HomeCtrl',function($scope,$location){
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Before IA 1', 'Before IA 2'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $scope.labels1 = ["Classes till date", "Before IA 2", "Total Classes"];
+  $scope.data1 = [20,0,52];
+
 
     $scope.user={};
     $scope.user.name = JSON.parse(window.localStorage.account).name;
@@ -154,7 +168,7 @@ $location.path('/viewmarks');
               $scope.progressbar.start();
         $http.get('http://localhost:80/getusn.php?subject_code=10cs71')
           .then(function(result){
-          	   //console.log(result.data);
+          	   console.log(result.data);
           	   
                $scope.usn_list = result.data;
                console.log($scope.usn_list[0].name);
@@ -285,6 +299,9 @@ $location.path('/viewmarks');
       resolve: {
         inputfile: function () {
           return $scope.inputfile;
+        },
+        assignment_name:function(){
+          return $scope.assignment_name;
         }
       }
     });
@@ -315,17 +332,20 @@ $location.path('/viewmarks');
   };
 
 })
-.controller('ModalInstanceCtrl2', function ($scope,$http, $uibModalInstance, inputfile,$location) {
+.controller('ModalInstanceCtrl2', function ($scope,$http, $uibModalInstance,inputfile,$location) {
 
-  $scope.uploadFile = function(files) {
+  $scope.uploadFile = function(files,assignment_name,num_of_questions) {
    var fd = new FormData();
+   $scope.assignment_name=assignment_name;
    //Take the first selected file
    fd.append("assignment", files[0]);
-   
+   fd.append("assignment_name",assignment_name);
+   fd.append("num_of_questions",num_of_questions);
+   console.log(num_of_questions);
 
-   $http.post('http://localhost:80/upload_assignment.php', fd, {
+   $http.post('http://dscelib.comeze.com/upload_assignment.php', fd, {
        withCredentials: true,
-       headers: {'Content-Type': undefined },
+       headers: {'Content-type':undefined},
        transformRequest: angular.identity
    }).success(function(result){
               //console.log(result.data);

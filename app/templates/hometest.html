@@ -4,16 +4,28 @@
 	margin-left:0px;
 	width:100%;
 }
+.panel{
+  border-right:none;
+  border-left:none;
+}
 .jumbotron{
 	
 }
-.glyphicon:hover{
+a{
+  color: #363636;
+}
+a>.glyphicon:hover{
 	text-decoration: none;
-    background-color:#E87E04;
+    background-color:#22313f;
     color:#ffffff;
     border:none;
+    
 
 }
+input:focus{
+  opacity:1.0;
+}
+
 .glyphicon:active{
 	 border:none;
       color:#F5F7FA;
@@ -21,29 +33,155 @@
 }
 .thumbnail{
 
+  position: relative;
+  /*border:none;*/
+  background-color: #ffffff;
+  top:0em;
+  opacity:0.9;
+  height:100%;
+  padding:0em;
+  border-bottom:none;
+  
+
+  
+
+
+  
 }
-.thumbnail>.caption>.glyphicon{
-	font-size:50px;
-	left:60px;
+#thumbnail-1{
+  animation-name: home-animation1;
+    animation-duration: 2s;
+}
+#thumbnail-2{
+  animation-name: home-animation2;
+    animation-duration: 2s;
+}
+#thumbnail-3{
+  animation-name: home-animation3;
+    animation-duration: 2s;
+}
+#thumbnail-4{
+  animation-name: home-animation4;
+    animation-duration: 2s;
+}
+@keyframes home-animation1{
+  from {left:-260px;}
+  to {left:0px;}
+
+}
+@keyframes home-animation2{
+  from {top:-260px;}
+  to {top:0em;}
+
+}
+@keyframes home-animation3{
+  from {top:300px;}
+  to {top:0em;}
+
+}
+@keyframes home-animation4{
+  from {right:-260px;}
+  to {right:0px;}
+
+}
+@keyframes example {
+    0%   {color:#f0f0f0;background-color:#ffffff;}
+    
+    50%  {color:#337ab7;background-color:#f8f8f8;}
+    100% {color:#363636;background-color:#ffffff;}
+}
+
+/* The element to apply the animation to */
+/*@keyframes image-fade-in{
+  0% {opacity:0.5;}
+  25% {opacity: 0.7;}
+  50% {opacity: 0.8;}
+  100% {opacity:1;}
+}*/
+#main-jumbotron {
+    
+    background-image:url('img/book-library2.jpg');
+    background-color: #666;
+    background-attachment: fixed;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    
+    
+}
+#thumbnail-jumbotron>.row{
+  border:2px solid #f0f0f0;
+  position:relative;
+  top:-10em;
+  border-bottom:none;
+  
+  
+}
+#thumbnail-jumbotron>.row>.col-lg-3{
+  padding:0px;
+  border:none;
+
+}
+#thumbnail-jumbotron{
+  background-color: #ffffff;
+  margin:0px;
+}
+.thumbnail>.caption>a>.glyphicon{
+  text-align: center;
+  position: relative;
+	font-size:30px;
+	left:3em;
   padding:20px;
   border:1px solid #a0a0a0;
   border-radius: 100px;
-  background-color:#f0f0f0;
-  color:#22313F;
+  
+  animation-name: example;
+    animation-duration: 5s;
+
+    
+}
+.panel-default>.panel-heading{
+  background-color: #C5EFF7;
+  color:#22313f;
+  line-height: 1px
 }
 .thumbnail>.caption>.list-unstyled>li>.btn{
 	width:100%;
 	line-height: 15px;
 	margin:4px;
+  opacity:1.0;
 }
-.thumbnail>.caption>h3{
+.thumbnail>.caption>ul>li{
+  line-height: 2em;
+  color:#363636;
+}
+.thumbnail>.caption>h5{
 	text-align:center;
+  color:#363636;
+  opacity:1.0;
 }
+#thumbnail-1>.caption>h5{
+  color:#d9534f;
+}
+#thumbnail-2>.caption>h5{
+  color:#5cb85c;
+}
+#thumbnail-3>.caption>h5{
+  color:#337ab7;
+}
+#thumbnail-4>.caption>h5{
+  color:#ec971f;
+}
+
+
+
 
 
 
 </style>
-<div class="container-fluid" style="height:100%;width:90%;background-color:#ffffff">
+<div class="container-fluid" style="height:100%;width:95%;background-color:#ffffff">
 <!--<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -55,18 +193,52 @@
     <button type="button" class="btn btn-warning navbar-btn btn-right" style="line-height:10px;">Check Schedule</button>
   </div>
 </nav>-->
+<nav class="navbar navbar-default" style="border:none;background-color:#ffffff;margin-bottom:0px">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="img/myDP.jpg" class="img-responsive img-rounded" style="max-height:30px;max-width:30px;margin-right:0px;display:inline"></a>
 
-<div class="container-fluid" style="height:50px;padding:10px">
-<div class="row">
-                  <div class="col-sm-8" style="padding:0px">
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+       <li><h4 class="text-primary" style="color:#363636;top:10px;position:relative;padding:0px;margin-bottom:0px">{{user.name}}</h4></li>
+             </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><form class="navbar-form navbar-left" role="search" style="line-height:2px">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search by usn">
+  </div>
+  <span class="glyphicon glyphicon-search"></span>
+</form></li>
+
+       <li> <a href="#"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:20px;margin-left:50px;"></span></a></li>
+                   <li> <a href="#"><span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left:50px;"></span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<!--<div class="row" style="height:3em;margin-top:6px">
+                  <div class="col-lg-8" style="padding:0px">
                         <img src="img/myDP.jpg" class="img-responsive img-rounded" style="max-height:30px;max-width:30px;margin-right:0px;display:inline">
                         <h4 class="text-primary" style="color:#363636;left:50px;top:-35px;position:relative;padding:0px">{{user.name}}</h4>
                         
                   </div>
 
-                  <div class="col-sm-4" style="padding-left:0px;margin-left:0px">
+                  <div class="col-lg-4" style="padding-left:0px;margin-left:0px">
                      
-                  	<button type="button" class="btn btn-primary" style="line-height:10px;">Check Schedule</button>
+                  	
                   	<a href="#"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:23px;margin-left:50px;color:#363636"></span></a>
                   	<a href="#"><span class="glyphicon glyphicon-bell" style="font-size:23px;margin-left:50px;color:#363636"></span></a>
 
@@ -76,13 +248,13 @@
                   </div>
 
 
-             </div>
-         </div>
+             </div>-->
+      
 
-   <div class="jumbotron" style="background-image:url('img/book-library1.jpg');height:400px;margin-bottom:0px;width:100%">
-    <div style="opacity:0.8">
+   <div class="jumbotron" style="height:300px;margin-bottom:0px;width:100%" id="main-jumbotron">
+    <!--<div style="opacity:0.8">
    	<h2 style="color:#ffffff;text-align:center;position:relative;top:80px">Hello,{{user.name}}</h2>
-   	   <div class="row" style="position:relative;top:80px">
+   	   <!--<div class="row" style="position:relative;top:21em">
   <div class="col-lg-12">
     <div class="input-group">
       <div class="input-group-btn">
@@ -97,110 +269,94 @@
       </ul>
     </div>
  
-      </div><!-- /btn-group -->
+      </div>
       <input type="text" class="form-control" aria-label="..." placeholder="Enter student usn or full name">
       <div class="input-group-btn">
            <button type="button" class="btn btn-primary">Search</button>
 
       </div>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-10 -->
+    </div>
+  </div>
   
   
-</div><!-- /.row -->
+</div>
    	
        
-</div>
+</div>-->
    </div>
-    <div class="jumbotron" style="background-color:#ffffff">
-   	
+    <div class="jumbotron" id="thumbnail-jumbotron">
+      
        <div class="row">
 
              <div class="col-lg-3">
-                  <div class="thumbnail">
+                  <div class="thumbnail" id="thumbnail-1">
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-user"></span>
-        <h3 class="text-primary">Student details</h3>
-        <ul>
-          <li>Check student details</li>
-          <li>Check class details</li>
-          <li>Compare student performance</li>
-        </ul>
-        <ul class="list-unstyled">
-        <li><button type="button" class="btn btn-primary" ng-click="studentdetails()">Check student details</button></li>
+        <a href="#/student-profile"><span class="glyphicon glyphicon-user"></span></a>
+        <h5 class="text-primary">Check Student details</h5>
+        
+        <!--<ul class="list-unstyled">
+        <li><button type="button" class="btn btn-danger" ng-click="studentdetails()">Check student details</button></li>
         
       
       <li><button type="button" class="btn btn-default">Check class details</button></li>
-  </ul>
+  </ul>-->
       </div>
     </div>
 
              </div>
              <div class="col-lg-3">
-             	<div class="thumbnail">
+             	<div class="thumbnail" id="thumbnail-2">
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-edit"></span>
-        <h3 class="text-primary">Attendance</h3>
-        <ul>
-          <li class="text-wrap">Check student attendance</li>
-          <li>Check class attendance</li>
-          <li>Mark attendance for a class</li>
-        </ul>
-        <ul class="list-unstyled">
-        <li><button type="button" class="btn btn-primary">View Attendance</button></li>
+        <a href="#/updateattendance"><span class="glyphicon glyphicon-edit"></span></a>
+        <h5 class="text-primary">Mark Attendance</h5>
+        
+       <!-- <ul class="list-unstyled">
+        <li><button type="button" class="btn btn-success">View Attendance</button></li>
         
       
       <li><button type="button" class="btn btn-default" ng-click="attendance()">Mark Attendance</button></li>
-  </ul>
+  </ul>-->
       </div>
     </div>
                    
 
              </div>
              <div class="col-lg-3">
-                     <div class="thumbnail">
+                     <div class="thumbnail" id="thumbnail-3">
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-file"></span>
-        <h3 class="text-primary">Assignments</h3>
-        <ul>
-          <li>Upload asignments</li>
-          <li>View submissions</li>
-          <li>Evaluate submissions</li>
-        </ul>
-        <ul class="list-unstyled" style="margin-top:30px">
+        <a href="#/uploadassignment"><span class="glyphicon glyphicon-file"></span></a>
+        <h5 class="text-primary">Upload Assignments</h5>
+        
+       <!-- <ul class="list-unstyled">
         <li><button type="button" class="btn btn-primary" ng-click="uploadassignment()">Upload Assignments</button></li>
         
       
       <li><button type="button" class="btn btn-default">Update submissions</button></li>
-  </ul>
+  </ul>-->
       </div>
     </div>
 
              </div>
              <div class="col-lg-3">
-                      <div class="thumbnail">
+                      <div class="thumbnail" id="thumbnail-4">
       
       <div class="caption">
         
-        <span class="glyphicon glyphicon-folder-open"></span>
-        <h3 class="text-primary">IA Marks</h3>
-        <ul>
-          <li>View Student Marks</li>
-          <li>Update Student Marks</li>
-          <li>Evaluate Student performance</li>
-        </ul>
-        <ul class="list-unstyled">
-        <li><button type="button" class="btn btn-primary" ng-click="viewmarks()">View and update marks</button></li>
+        <a href="#/viewmarks"><span class="glyphicon glyphicon-folder-open"></span></a>
+        <h5 class="text-primary">View IA Marks</h5>
+        
+        <!--<ul class="list-unstyled">
+        <li><button type="button" class="btn btn-warning" ng-click="viewmarks()">View and update marks</button></li>
         
       
       <li><button type="button" class="btn btn-default">Evaluate performance</button></li>
-  </ul>
+  </ul>-->
       </div>
     </div>
 
@@ -208,6 +364,58 @@
 
 
        </div>
+       <div class="row" style="position:relative;margin-top:0px">
+           <div class="col-lg-12" style="border-top:1px solid #f8f8f8;padding-top:5px;padding:0px">
+        <div class="row" style="padding:0px">
+        <div class="col-lg-12" style="padding:0px">
+              <div class="panel panel-default" style="border-bottom:none">
+  <div class="panel-heading">Attendance</div>
+  <div class="panel-body">
+    <div class="col-lg-4">
+    <canvas id="line" class="chart chart-line" chart-data="data"
+  chart-labels="labels" chart-legend="true" chart-series="series"
+  chart-click="onClick" >
+</canvas> 
+</div>
+<div class="col-lg-4">
+        <canvas id="doughnut" class="chart chart-doughnut"
+  chart-data="data1" chart-labels="labels1">
+</canvas> 
+
+</div>
+<div class="col-lg-4" style="line-height:5px">
+      <h5>Classes till date: <b>25</b></h5>
+      <h5>Total classes: <b>52</b></h5>
+
+  </div>
+  </div>
+</div>
+           </div>
+            <div class="col-lg-12" style="padding:0px">
+              <div class="panel panel-default">
+  <div class="panel-heading">Time Table</div>
+  <div class="panel-body">
+    <div class="col-lg-6">
+      <h5 style="border-bottom:2px solid #f0f0f0">Class time table</h5>
+    <a href="img/class-time-table-8a.jpg"><img src="img/class-time-table-8a.jpg" style="max-height:80%;max-width:80%"></a>
+  </div>
+  <div class="col-lg-6">
+    <h5 style="border-bottom:2px solid #f0f0f0">Personal schedule</h5>
+     <a href="img/class-time-table-8a.jpg"><img src="img/class-time-table-8a.jpg" style="max-height:80%;max-width:80%"></a>
+
+  </div>
+  </div>
+</div>
+               
+           </div>
+
+          </div>
+       </div>
+
+
+       </div>
+     
 
    </div>
+
 </div>   
